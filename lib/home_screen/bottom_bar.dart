@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:self_help/data/categories.dart';
 
 class BottomBar extends StatefulWidget {
   const BottomBar({super.key});
@@ -21,24 +22,16 @@ class _BottomBarState extends State<BottomBar> {
   @override
   Widget build(BuildContext context) {
     return BottomNavigationBar(
-      items: const <BottomNavigationBarItem>[
-        BottomNavigationBarItem(
-          icon: Icon(Icons.task_alt_rounded),
-          label: "Tasks",
-        ),
-        BottomNavigationBarItem(
-          icon: Icon(Icons.access_time),
-          label: "Routines",
-        ),
-        BottomNavigationBarItem(
-          icon: Icon(Icons.home),
-          label: "Home",
-        )
-      ],
+      items: categories.map(
+            (category) => BottomNavigationBarItem(
+              icon: category.icon,
+              label: category.label,
+            ),
+          ).toList(),
       selectedItemColor: Colors.green,
       iconSize: 30,
-      elevation: 5,
-      unselectedItemColor: Colors.blue,
+      elevation: 0,
+      unselectedItemColor: const Color.fromARGB(255, 129, 125, 125),
       currentIndex: _selectedIndex,
       onTap: _onItemTapped,
     );
