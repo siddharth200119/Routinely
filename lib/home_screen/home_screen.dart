@@ -3,7 +3,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:self_help/home_screen/bottom_bar.dart';
 import 'package:flutter_expandable_fab/flutter_expandable_fab.dart';
 import 'package:self_help/data/categories.dart';
-import 'package:self_help/new_item_screen/new_item_screen.dart';
+import 'package:self_help/new_item_screen/new_task_screen.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -23,9 +23,13 @@ class HomeScreen extends StatelessWidget {
             .map(
               (category) => FloatingActionButton(
                 onPressed: () {
-                  showModalBottomSheet(context: context, builder: (ctx){
-                    return const NewItemScreen();
-                  });
+                  showModalBottomSheet(
+                    context: context,
+                    isScrollControlled: true,
+                    builder: (ctx) {
+                      return const NewItemScreen();
+                    },
+                  );
                 },
                 child: category.icon,
               ),
